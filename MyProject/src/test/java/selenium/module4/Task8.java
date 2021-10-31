@@ -27,10 +27,10 @@ public class Task8 {
     public void checkStickersTest() {
         int size = driver.findElementsByCssSelector(".product").size();
         for (int i = 0; i < size; i++) {
-            driver.findElementsByCssSelector(".product")
-                    .get(i)
-                    .findElement(By.cssSelector("[class^=sticker]"))
-                    .isDisplayed();
+            int numberOfStickers = driver.findElementsByCssSelector(".product").get(i)
+                    .findElements(By.cssSelector("[class^=sticker]"))
+                    .size();
+            assertEquals(1, numberOfStickers, "У продукта НЕ один стикер");
         }
     }
 
