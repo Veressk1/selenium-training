@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Task7 {
@@ -28,12 +27,19 @@ public class Task7 {
 
     @Test
     public void clickAllLeftMenuElements() {
-        List<WebElement> leftElementsList = driver.findElementsByCssSelector(".name");
-        int size = leftElementsList.size();
-        for (int i = 0; i < size; i++) {
-            leftElementsList = driver.findElementsByCssSelector(".name");
+        List<WebElement> leftElementsList = driver.findElementsByXPath(".//span[@class='fa-stack fa-lg icon-wrapper']");
+        int size1 = leftElementsList.size();
+        for (int i = 0; i < size1; i++) {
+            leftElementsList = driver.findElementsByXPath(".//span[@class='fa-stack fa-lg icon-wrapper']");
             leftElementsList.get(i).click();
             driver.findElementByTagName("h1").isDisplayed();
+            List<WebElement> leftInsideElementsList = driver.findElementsByCssSelector("[id^=doc-]");
+            int size2 = leftInsideElementsList.size();
+            for (int j = 0; j < size2; j++) {
+                leftInsideElementsList = driver.findElementsByCssSelector("[id^=doc-]");
+                leftInsideElementsList.get(j).click();
+                driver.findElementByTagName("h1").isDisplayed();
+            }
         }
     }
 
